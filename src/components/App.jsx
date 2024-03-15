@@ -1,4 +1,5 @@
 import { Stopwatch } from './Stopwatch';
+import { Timer } from './Timer';
 
 export const App = () => {
   const time1 = Stopwatch(60);
@@ -10,6 +11,7 @@ export const App = () => {
       {time1}
       {time2}
       {time3}
+      <Timer duration={2 * 24 * 60 * 60 * 1000} />
     </div>
   );
 };
