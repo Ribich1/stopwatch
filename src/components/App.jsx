@@ -1,17 +1,22 @@
-import { Stopwatch } from './Stopwatch';
-import { Timer } from './Timer';
+import { useState } from 'react';
+import { Timeleft } from './Timeleft';
 
 export const App = () => {
-  const time1 = Stopwatch(60);
-  const time2 = Stopwatch(90);
-  const time3 = Stopwatch(7400);
+  const [arrTimer, setArrTimer] = useState([]);
+
+  const handleAddTimer = () => {
+    setArrTimer([...arrTimer, <Timeleft duration="150" name="name1" />]);
+  };
+  console.log(arrTimer);
 
   return (
     <div>
-      {time1}
-      {time2}
-      {time3}
-      <Timer duration={2 * 24 * 60 * 60 * 1000} />
+      <button onClick={handleAddTimer}>Add timer</button>
+      <ul>
+        {arrTimer.map((e, i) => (
+          <li key={i + 1}>{e}</li>
+        ))}
+      </ul>
     </div>
   );
 };
