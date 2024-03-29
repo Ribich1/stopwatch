@@ -1,8 +1,8 @@
 import { getPadTime } from 'helpers/getPadTime';
 import { useState, useEffect } from 'react';
 
-export const Timeleft = ({duration,name}) => {
-  const [timeLeft, setTimeLeft] = useState((duration));
+export const Timeleft = ({ duration, name, handleDelete,index}) => {
+  const [timeLeft, setTimeLeft] = useState(duration);
   const [isCounting, setIsCounting] = useState(false);
 
   const minutes = getPadTime(Math.floor(timeLeft / 60));
@@ -26,8 +26,9 @@ export const Timeleft = ({duration,name}) => {
     setIsCounting(false);
   };
   const handleReset = () => {
-    setIsCounting(false);
-    setTimeLeft(5);
+    //   setIsCounting(false);
+      handleDelete(index)
+       //   setTimeLeft(5);
   };
 
   return (
@@ -44,7 +45,7 @@ export const Timeleft = ({duration,name}) => {
         ) : (
           <button onClick={handleStart}>Start</button>
         )}
-        <button onClick={handleReset}>Reset</button>
+        <button onClick={handleReset}>Delete</button>
       </div>
     </div>
   );
