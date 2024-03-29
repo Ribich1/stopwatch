@@ -1,16 +1,14 @@
-import { getPadTime } from 'helpers/getPadTime';
+import { msToTime } from 'helpers/getPadTime';
 import { useState, useEffect } from 'react';
 
-export const Timeleft = ({ duration, name, handleDelete,index}) => {
+export const Timeleft = ({ duration, name, handleDelete, index }) => {
   const [timeLeft, setTimeLeft] = useState(duration);
   const [isCounting, setIsCounting] = useState(false);
 
-  const minutes = getPadTime(Math.floor(timeLeft / 60));
-  const seconds = getPadTime(timeLeft - minutes * 60);
-
   useEffect(() => {
     const interval = setInterval(() => {
-      isCounting && setTimeLeft(timeLeft => (timeLeft >= 1 ? timeLeft - 1 : 0));
+      isCounting &&
+        setTimeLeft(timeLeft => (timeLeft >= 1000 ? timeLeft - 1000 : 0));
     }, 1000);
     if (timeLeft === 0) setIsCounting(false);
     return () => {
@@ -27,17 +25,15 @@ export const Timeleft = ({ duration, name, handleDelete,index}) => {
   };
   const handleReset = () => {
     //   setIsCounting(false);
-      handleDelete(index)
-       //   setTimeLeft(5);
+    handleDelete(index);
+    //   setTimeLeft(5);
   };
 
   return (
     <div>
       <div>
         <span>{name}</span> <br />
-        <span>{minutes}</span>
-        <span>:</span>
-        <span>{seconds}</span>
+        <span>{msToTime(timeLeft)}</span>
       </div>
       <div>
         {isCounting ? (
