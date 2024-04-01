@@ -2,7 +2,7 @@ import { useTimers } from 'context/ContextTimers';
 import { msToTime } from 'helpers/getPadTime';
 import { useEffect, useState } from 'react';
 
-export const TimerItem = ({ name, timer, id }) => {
+export const TimerItem = ({ name, timer, id, nameOfTimerUntil }) => {
   const { delTimer } = useTimers();
   const [timeLeft, setTimeLeft] = useState(timer);
   const [isCounting, setIsCounting] = useState(false);
@@ -31,7 +31,7 @@ export const TimerItem = ({ name, timer, id }) => {
   };
   return (
     <div>
-      <p>{name}</p>
+      <p>{name || nameOfTimerUntil}</p>
       <p>{msToTime(timeLeft)}</p>
       {isCounting ? (
         <button onClick={handleStop}>Stop</button>

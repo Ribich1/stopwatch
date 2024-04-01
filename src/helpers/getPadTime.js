@@ -8,9 +8,12 @@ export const timerMs = timer => {
   return hours + minutes + seconds;
 };
 
-export const msToTime = (timer) => {
-    const seconds = getPadTime(String(Math.floor((timer / 1000) % 60)));
-    const minutes = getPadTime(String(Math.floor((timer / 1000/60) % 60)));
-    const hours = getPadTime(String(Math.floor((timer / 1000 / 60 / 60) % 60)));
-    return `${hours}:${minutes}:${seconds}`
-}
+export const msToTime = timer => {
+  const seconds = getPadTime(String(Math.floor((timer / 1000) % 60)));
+  const minutes = getPadTime(String(Math.floor((timer / 1000 / 60) % 60)));
+  const hours = getPadTime(String(Math.floor((timer / 1000 / 60 / 60))));
+  const days = getPadTime(String(Math.floor(hours/24)));
+
+  return `${days}:${getPadTime(hours-days*24)}:${minutes}:${seconds}`;
+  // return `${hours}:${minutes}:${seconds}`;
+};

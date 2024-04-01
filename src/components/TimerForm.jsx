@@ -17,6 +17,12 @@ export const TimerForm = () => {
     const timer = timerMs(values.timer);
     if (values.variant === 'Two') {
       console.log('two');
+      console.log(values);
+      const dateUntil = `${values.date} ${values.timeUntil}`;
+      const dateUntilMs = Date.parse(dateUntil);
+      const timer = dateUntilMs - Date.now();
+      addTimer({ ...values, timer, id });
+      resetForm();
       return;
     }
     addTimer({ ...values, timer, id });
@@ -31,6 +37,10 @@ export const TimerForm = () => {
             <Field type="radio" name="variant" value="One" />
             One
           </label>
+          <label>
+            <Field type="radio" name="variant" value="Two" />
+            Two
+          </label>
           {values.variant === 'One' && (
             <>
               <label htmlFor="name">Name of Timer</label>
@@ -44,17 +54,13 @@ export const TimerForm = () => {
               <Field type="time" id="timer" name="timer" step="1" />
             </>
           )}
-          <label>
-            <Field type="radio" name="variant" value="Two" />
-            Two
-          </label>
           {values.variant === 'Two' && (
             <>
-              <label htmlFor="nameUntil">Name of Timer</label>
+              <label htmlFor="nameOfTimerUntil">Name of Timer</label>
               <Field
                 type="text"
-                id="nameUntil"
-                name="nameUntil"
+                id="nameOfTimerUntil"
+                name="nameOfTimerUntil"
                 placeholder="Name of Timer"
               />
               <label htmlFor="date">Timer until the date:</label>
