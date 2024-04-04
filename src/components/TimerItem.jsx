@@ -8,9 +8,12 @@ export const TimerItem = ({ name, timer, id, nameOfTimerUntil }) => {
   const [isCounting, setIsCounting] = useState(false);
 
   useEffect(() => {
+    const time1 = Date.now();
     const interval = setInterval(() => {
       isCounting &&
-        setTimeLeft(timeLeft => (timeLeft >= 1000 ? timeLeft - 1000 : 0));
+        setTimeLeft(timeLeft =>
+          timeLeft >= 1000 ? timeLeft - (Date.now() - time1) : 0
+        );
     }, 1000);
     if (timeLeft === 0) setIsCounting(false);
     return () => {
