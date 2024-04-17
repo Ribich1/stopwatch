@@ -1,10 +1,12 @@
 import { useTimers } from 'context/ContextTimers';
 import { msToTime } from 'helpers/getPadTime';
 import { useEffect, useState } from 'react';
-import { DeleteTimerModal } from './DeleteTimerModal/DeleteTimerModal';
+import { DeleteTimerModal } from '../DeleteTimerModal/DeleteTimerModal';
+import { Button, TimerWraper } from './TimerItem.styled';
 
-export const TimerItem = ({ name, timer, id }) => {
+export const TimerItem = ({ name, timer, id, skin }) => {
   const { delTimer } = useTimers();
+
   const [timeLeft, setTimeLeft] = useState(timer);
   const [isCounting, setIsCounting] = useState(false);
 
@@ -38,18 +40,18 @@ export const TimerItem = ({ name, timer, id }) => {
   };
   return (
     <>
-      <div>
+      <TimerWraper color={skin}>
         <p>{name}</p>
         <p>{msToTime(timeLeft)}</p>
         {isCounting ? (
-          <button onClick={handleStop}>Stop</button>
+          <Button onClick={handleStop}>Stop</Button>
         ) : (
-          <button onClick={handleStart}>Start</button>
+          <Button onClick={handleStart}>Start</Button>
         )}
-        <button onClick={() => setIsOpenModal(true)} type="button">
+        <Button onClick={() => setIsOpenModal(true)} type="button">
           Delete
-        </button>
-      </div>
+        </Button>
+      </TimerWraper>
       <DeleteTimerModal
         open={isOpenModal}
         onClose={() => setIsOpenModal(false)}

@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import { timerMs } from '../../helpers/getPadTime';
 import { useTimers } from '../../context/ContextTimers';
 import { AddTimerFormModal } from '../AddTimerFormModal/AddTimerFormModal';
+import { Button } from './AddTimerBtn.styled';
 
 export const AddTimerBtn = () => {
   const { addTimer } = useTimers();
@@ -27,9 +28,9 @@ export const AddTimerBtn = () => {
 
   return (
     <>
-      <button type="button" onClick={() => setIsOpen(true)}>
+      <Button type="button" onClick={() => setIsOpen(true)}>
         Add Timer
-      </button>
+      </Button>
       <AddTimerFormModal
         onSubmit={handleSubmit}
         open={isOpen}

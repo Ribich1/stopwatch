@@ -7,6 +7,8 @@ export const BoxStyled = styled(Box)`
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #ccc;
-  border: 2px solid #000;
+  /* border: 2px solid #000; */
   padding: 24px;
+  border: transparent;
+  border-radius: 16px
 `;

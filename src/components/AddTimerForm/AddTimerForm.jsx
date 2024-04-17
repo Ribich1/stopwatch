@@ -1,4 +1,12 @@
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field } from 'formik';
+import {
+  Button,
+  FieldStyled,
+  FormStyled,
+  Label,
+  TitleForm,
+} from './AddTimerForm.styled';
+import { SpanBlue, SpanGreen, SpanRed } from 'components/TimerItem/TimerItem.styled';
 
 export const AddTimerForm = ({ onSubmit }) => {
   const initialValues = {
@@ -8,49 +16,66 @@ export const AddTimerForm = ({ onSubmit }) => {
     variant: 'One',
     date: '',
     timeUntil: '',
+    skin: 'Red'
   };
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
       {({ values }) => (
-        <Form>
-          <label>
+        <FormStyled>
+          <TitleForm>Add new timer</TitleForm>
+
+          <Label>
+            Name of Timer
+            <FieldStyled type="text" name="name" placeholder="Name of Timer" />
+          </Label>
+
+          <Label>
             <Field type="radio" name="variant" value="One" />
-            One
-          </label>
-          <label>
+            Input timer duration
+          </Label>
+          <Label>
             <Field type="radio" name="variant" value="Two" />
-            Two
-          </label>
-          <label htmlFor="name">Name of Timer</label>
-          <Field
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Name of Timer"
-          />
+            Input time until
+          </Label>
           {values.variant === 'One' && (
             <>
-              <label htmlFor="timer">Duration of Timer</label>
-              <Field type="time" id="timer" name="timer" step="1" />
+              <div>
+                <Label htmlFor="timer">Duration of Timer</Label>
+                <FieldStyled type="time" id="timer" name="timer" step="1" />
+              </div>
             </>
           )}
           {values.variant === 'Two' && (
             <>
-              {/* <label htmlFor="nameOfTimerUntil">Name of Timer</label>
-              <Field
-                type="text"
-                id="nameOfTimerUntil"
-                name="nameOfTimerUntil"
-                placeholder="Name of Timer"
-              /> */}
-              <label htmlFor="date">Timer until the date:</label>
-              <Field type="date" id="date" name="date" />
-              <label htmlFor="timeUntil">Timer until the time:</label>
-              <Field type="time" id="timeUntil" name="timeUntil" step="1" />
+              <div>
+                <Label htmlFor="date">Timer until the date:</Label>
+                <FieldStyled type="date" id="date" name="date" />
+              </div>
+              <div>
+                <Label htmlFor="timeUntil">Timer until the time:</Label>
+                <FieldStyled
+                  type="time"
+                  id="timeUntil"
+                  name="timeUntil"
+                  step="1"
+                />
+              </div>
             </>
           )}
-          <button type="submit">Add Timer</button>
-        </Form>
+          <Label>
+            <Field type="radio" name="skin" value="Red" />
+            <SpanRed>Variant Red</SpanRed>
+          </Label>
+          <Label>
+            <Field type="radio" name="skin" value="Green" />
+            <SpanGreen>Variant Green</SpanGreen>
+          </Label>
+          <Label>
+            <Field type="radio" name="skin" value="Blue" />
+            <SpanBlue>Variant Blue</SpanBlue>
+          </Label>
+          <Button type="submit">Add Timer</Button>
+        </FormStyled>
       )}
     </Formik>
   );

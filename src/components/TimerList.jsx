@@ -1,5 +1,5 @@
 import { useTimers } from 'context/ContextTimers';
-import { TimerItem } from './TimerItem';
+import { TimerItem } from './TimerItem/TimerItem';
 
 export const TimerList = () => {
   const { timers } = useTimers();
