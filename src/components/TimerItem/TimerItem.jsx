@@ -48,7 +48,7 @@ export const TimerItem = ({ name, timer, id, skin }) => {
         ) : (
           <Button onClick={handleStart}>Start</Button>
         )}
-        <Button onClick={() => setIsOpenModal(true)} type="button">
+        <Button color='red' onClick={() => setIsOpenModal(true)} type="button">
           Delete
         </Button>
       </TimerWraper>

@@ -1,14 +1,15 @@
 import { ModalDialog } from 'components/Modal/Modal';
-import { Button, DelBtnWrapper } from './DeleteTimerModal.styled';
+import { Button, DelBtnWrapper, Title } from './DeleteTimerModal.styled';
 
 export const DeleteTimerModal = ({ onSubmit, open, onClose }) => {
   return (
     <ModalDialog open={open} onClose={onClose}>
-      <DelBtnWrapper>
+      <Title>Are You sure?</Title>
+      <DelBtnWrapper>        
         <Button type="button" onClick={onClose}>
           Cancel
         </Button>
-        <Button type="button" onClick={onSubmit}>
+        <Button color='red' type="button" onClick={onSubmit}>
           Delete
         </Button>
       </DelBtnWrapper>

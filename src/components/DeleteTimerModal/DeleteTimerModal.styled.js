@@ -5,7 +5,7 @@ export const Button = styled.button`
   display: block;
   margin: 0px auto;
   border: none;
-  background: green;
+  background: ${({ color }) => color || 'green'};
   border-radius: 8px;
   padding: 8px 12px;
   color: white;
@@ -20,7 +20,13 @@ export const Button = styled.button`
 `;
 
 export const DelBtnWrapper = styled.div`
-display:flex;
-gap:8px;
+  display: flex;
+  gap: 8px;
+`;
 
-`
+export const Title = styled.p`
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+`;

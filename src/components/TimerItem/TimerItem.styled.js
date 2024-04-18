@@ -5,8 +5,9 @@ export const Button = styled.button`
   display: block;
   margin: 0px auto;
   border: none;
-  background: green;
+  background: ${({ color }) => color || 'green'};
   border-radius: 8px;
+  border: 1px solid black;
   padding: 8px 12px;
   color: white;
   transform: scale();
@@ -26,7 +27,7 @@ export const TimerWraper = styled.div`
   gap: 5px;
   flex-direction: column;
   justify-content: center;
-  background: ${props=>props.color||'red'};
+  background: ${props => props.color};
   padding: 5px;
 
   & p {

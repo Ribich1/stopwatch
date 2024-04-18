@@ -1,5 +1,5 @@
 import { AddTimerBtn } from './AddTimerBtn/AddTimerBtn';
-import { TimerList } from './TimerList';
+import { TimerList } from './TimerList/TimerList';
 
 export const App = () => {
   return (
