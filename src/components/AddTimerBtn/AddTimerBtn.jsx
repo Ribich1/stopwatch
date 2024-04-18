@@ -11,7 +11,7 @@ export const AddTimerBtn = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     const id = nanoid();
-    const timer = timerMs(values.timer);
+    console.log('object');
     if (values.variant === 'Two') {
       const dateUntil = `${values.date} ${values.timeUntil}`;
       const dateUntilMs = Date.parse(dateUntil);
@@ -21,6 +21,7 @@ export const AddTimerBtn = () => {
       setIsOpen(false);
       return;
     }
+    const timer = timerMs(values.timer);
     addTimer({ ...values, timer, id });
     resetForm();
     setIsOpen(false);

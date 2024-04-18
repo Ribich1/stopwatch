@@ -6,7 +6,11 @@ import {
   Label,
   TitleForm,
 } from './AddTimerForm.styled';
-import { SpanBlue, SpanGreen, SpanRed } from 'components/TimerItem/TimerItem.styled';
+import {
+  SpanBlue,
+  SpanGreen,
+  SpanRed,
+} from 'components/TimerItem/TimerItem.styled';
 
 export const AddTimerForm = ({ onSubmit }) => {
   const initialValues = {
@@ -16,7 +20,7 @@ export const AddTimerForm = ({ onSubmit }) => {
     variant: 'One',
     date: '',
     timeUntil: '',
-    skin: 'Red'
+    skin: 'Red',
   };
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
@@ -26,7 +30,12 @@ export const AddTimerForm = ({ onSubmit }) => {
 
           <Label>
             Name of Timer
-            <FieldStyled type="text" name="name" placeholder="Name of Timer" />
+            <FieldStyled
+              required
+              type="text"
+              name="name"
+              placeholder="Name of Timer"
+            />
           </Label>
 
           <Label>
@@ -49,11 +58,12 @@ export const AddTimerForm = ({ onSubmit }) => {
             <>
               <div>
                 <Label htmlFor="date">Timer until the date:</Label>
-                <FieldStyled type="date" id="date" name="date" />
+                <FieldStyled required type="date" id="date" name="date" />
               </div>
               <div>
                 <Label htmlFor="timeUntil">Timer until the time:</Label>
                 <FieldStyled
+                  required
                   type="time"
                   id="timeUntil"
                   name="timeUntil"
